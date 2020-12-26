@@ -1,0 +1,43 @@
+<Br><Br>
+<main role="main" class="container" style="width: 40%">
+  <div class="card" >
+    <div class="card-header">
+      <h3>Acesse o sistema</h3>
+    </div>
+    <div class="card-body" >
+      <br />
+      <form [formGroup]="loginForm" name="loginForm" method="POST" (submit)="acesso()">
+        <div class="form-group">
+          <label>Usuário</label>
+          <input type="text" formControlName="login" name="login" size="20" class="form-control" />
+
+        </div>
+        <div class="form-group">
+          <label>Senha</label>
+          <input type="password" formControlName="senha" name="senha" size="30" class="form-control" />
+
+        </div>
+
+        <div *ngIf="loginForm.get('login').errors?.required">
+          <div class="p-3 mb-2 bg-warning text-dark">Login é obrigatório</div>
+        </div>
+
+        <div *ngIf="loginForm.get('senha').errors?.minlength || loginForm.get('senha').errors?.required">
+          <div class="p-3 mb-2 bg-warning text-dark">Senha obrigatória e de no mínimo 3 caracteres</div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm">
+            <input [disabled]="loginForm.invalid" type="submit" name="btn_submit" value="Entrar" class="btn btn-success btn-lg btn-block" />
+
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+
+</main>
